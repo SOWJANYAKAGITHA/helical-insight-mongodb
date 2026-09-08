@@ -1,0 +1,121 @@
+export const CUBE_EDITOR_TOOLTIPS = {
+  Domain:
+    "The business domain this cube belongs to (e.g., Sales, Finance). It scopes fields and helps route questions to the right data.",
+  "Cube Description":
+    "A short summary of what this cube contains and how it should be used. Required when saving the cube.",
+  "Semantic Model Description":
+    "A short description of what this semantic model covers and how it should be used. Required when saving the semantic model.",
+  Fields:
+    "Display name for each column or hierarchy member in the cube. Right-click for more field actions; double-click the title to rename hierarchies.",
+  Sort:
+    "Enable sorting on this field and choose ascending or descending order from the menu.",
+  Aggregation:
+    "Choose how values roll up (e.g., Sum, Count) when this field is used as a measure in reports.",
+  Format:
+    "Choose how numeric values are displayed (e.g., 0.00, #,##0) when this field is used as a measure.",
+  Partition:
+    "Mark a field for partitioning when you need data split or grouped along this dimension.",
+  Dimension:
+    "Convert this dimension into a measure so it can be aggregated.",
+  Measure:
+    "Convert this measure into a dimension.",
+  "Semantic Type":
+    "Classify the column (e.g., currency, email,etc..) so semantic models and reports interpret values correctly.",
+  Synonyms:
+    "Alternate names users might say for this field. Enter comma-separated values (e.g., users, clients,etc..).",
+  Instructions:
+    "Guidance for how the semantic model should interpret or use this field when answering questions.",
+  Examples:
+    "Examples teach the semantic model how to map plain language to database values (e.g., term -> column or value). Add more examples for better matching.",
+  "AI Context":
+    "Extra context that helps the semantic model understand this field: instructions, synonyms, and examples.",
+  Topic:
+    "Business topic for this field. Enter comma-separated values (e.g., Sales, Travel).",
+  "Semantic Model Topic":
+    "Business topics for this semantic model. Enter comma-separated values (e.g., Sales, Travel).",
+  Formula:
+    "Write the calculation for this field, referencing columns in cube notation (e.g., [Measures].[Amount]) or using aggregation functions (e.g., SUM, AVG).",
+  "Filter (optional)":
+    "Only calculate or include this field for records that match your condition (e.g., status = 'completed').",
+  Example:
+    "Examples teach the semantic model how to map plain language to database values (e.g., term -> column or value). Add more examples for better matching.",
+  "Dimension/Measure":
+    "A Dimension lets you group and filter; a Measure is a number you can total or average. Expand to set Sort for Dimensions, or Aggregation for Measures.",
+  "Clear field values": "Clear the field values from the cube",
+  "Remove field": "Removes this field from the cube",
+  "Remove from hierarchy":
+    "Removes this field from the hierarchy only. The field stays in the Fields list as a regular dimension.",
+  "Add to an existing Hierarchy":
+    "Add this field as a member of an existing hierarchy so it can be browsed and drilled into alongside related fields.",
+};
+
+export const AGENT_EDITOR_TOOLTIPS = {
+  Domain:
+    "A domain organizes your data into business areas (e.g., Sales, HR, Finance). When a user asks a question, the semantic model looks inside the right domain to find the answer faster and more accurately.",
+  "Domain Description":
+    "Explain what this domain covers (e.g., Sales performance, employee records). Helps the semantic model choose the right business area for a question.",
+  "Topic Description":
+    "Explain what this topic covers within the domain (e.g., Orders, Returns). Helps the semantic model narrow questions to the right group of fields.",
+  "Delete Domain":
+    "Removes this domain and all of its topics from the Business View. Fields stay in the Fields list; only the domain grouping is deleted.",
+  "Delete Topic":
+    "Removes this topic from the domain. Fields stay in the Fields list; only the topic grouping is deleted.",
+  "Remove field from topic":
+    "Removes this field from this topic only. The field remains available in the Fields list and in any other topics it belongs to.",
+  Fields:
+    "To build your Semantic Model, drag and drop fields from Metadata. Right-click a field for more actions. Hierarchies can only include Dimension fields.",
+  "Sort fields":
+    "Sort fields by name. Click to cycle A–Z, Z–A, then reset to the default (drag/drop) order.",
+  Sort:
+    "Choose ascending, descending, or natural order for this dimension when it is used in reports.",
+  Aggregation:
+    "Choose how values roll up (e.g., Sum, Count) when this field is used as a measure.",
+  Format:
+    "Choose how values are displayed (eg:: 0,0.00 etc..). Available formats depend on the selected semantic type.",
+  "Semantic Type":
+    "Classify the column (e.g., currency, email, etc..) so the semantic model interprets values correctly.",
+  Formula:
+    "Write the calculation for this field as an aggregation over your source columns (e.g.,COUNT(table_name.column_name)).",
+  Instructions:
+    "Guidance for how the semantic model should interpret or use this field when answering questions.",
+  Synonyms:
+    "Alternate names users might say for this field. Enter comma-separated values (e.g., users, clients,etc..).",
+  Examples:
+    "Examples teach the semantic model how to map plain language to database values (e.g., term -> column or value).",
+  "AI Context":
+    "Extra context that helps the semantic model understand this field: instructions, synonyms, and examples.",
+  "Dimension/Measure":
+    "A Dimension lets you group and filter; a Measure is a number you can total or average. Expand to set Sort for Dimensions, or Aggregation for Measures.",
+  "Semantic Model Topic":
+    "Business topics for this semantic model. Enter comma-separated values (e.g., Sales, Travel).",
+  Topic:
+    "A topic groups related fields inside a domain (e.g., Orders under Sales). Drop fields onto a topic to assign them. Drag a hierarchy to assign all of its columns at once. The same field can belong to multiple topics.",
+  "Business Domain":
+    "A business domain organizes your data into areas like Sales, HR, or Finance. Add topics inside a domain to group related fields. Right-click the domain name to add a description.",
+  "Business Topic":
+    "A business topic groups related fields inside a domain (e.g., Orders under Sales). Drop fields from the Fields list onto a topic to assign them. Drag a hierarchy to assign all of its columns at once. The same field can belong to multiple topics. Right-click the topic name to add a description.",
+  "Semantic Model":
+    "Give your name for this semantic model (e.g., Sales_Analytics , Model_1 ,etc..). You can click the pencil icon anytime to rename it. This name will be used when saving and helps you quickly recognize the model later.Right-click the model to add a description.",
+  "Delete Description":
+    "Clears only the description text. The domain or topic itself is not deleted.",
+  "Clear Description": "Clears the description text for this domain or topic.",
+  "Clear field values": "Clear the field values for this field",
+  "Remove field": "Removes this field from the semantic model metadata",
+  "Remove from hierarchy":
+    "Removes this field from the hierarchy only. The field stays in the Fields list as a regular dimension.",
+  "Add to an existing Hierarchy":
+    "Add this field as a member of an existing hierarchy so it can be browsed and drilled into alongside related fields.",
+  "Convert to Measure":
+    "Convert this dimension into a measure so it can be aggregated (e.g., sum, avg, etc..).",
+  "Convert to Dimension":
+    "Convert this measure into a dimension so it can be used for grouping and filtering.",
+};
+
+export function getCubeEditorTooltipText(label, variant = "cube") {
+  if (!label) return "";
+  const key = String(label);
+  if (variant === "agent") {
+    return AGENT_EDITOR_TOOLTIPS[key] || CUBE_EDITOR_TOOLTIPS[key] || "";
+  }
+  return CUBE_EDITOR_TOOLTIPS[key] || "";
+}

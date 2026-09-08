@@ -1,0 +1,78 @@
+from __future__ import annotations
+
+from typing import Optional
+
+from pydantic import BaseModel, Field, model_validator
+
+
+class TokenUsage(BaseModel):
+    """Token counts, optional cost, and timing for an LLM completion / request."""
+
+    input_tokens: int = Field(default=0, ge=0, description="Tokens in the prompt / input.")
+    output_tokens: int = Field(default=0, ge=0, description="Tokens in the model response.")
+    total_tokens: int = Field(default=0, ge=0, description="Sum of input and output tokens.")
+    input_cost: Optional[float] = Field(
+        default=None, ge=0, description="Cost of input tokens in USD, when reported by the provider."
+    )
+    output_cost: Optional[float] = Field(
+        default=None, ge=0, description="Cost of output tokens in USD, when reported by the provider."
+    )
+    total_cost: Optional[float] = Field(
+        default=None, ge=0, description="Total request cost in USD, when reported by the provider."
+    )
+    model_name: Optional[str] = Field(
+        default=None, description="LLM model identifier reported by the provider for this completion."
+    )
+    llm_seconds: float = Field(
+        default=0.0,
+        ge=0,
+        description="Accumulated wall time spent in LLM invoke calls.",
+    )
+    total_seconds: Optional[float] = Field(
+        default=None,
+        ge=0,
+        description="End-to-end request time including orchestration and SQL execution.",
+    )
+
+    @staticmethod
+    def _merge_model_name(left: Optional[str], right: Optional[str]) -> Optional[str]:
+        if not left:
+            return right
+        if not right or left == right:
+            return left
+        return left
+
+    @staticmethod
+    def _add_optional_cost(left: Optional[float], right: Optional[float]) -> Optional[float]:
+        if left is None and right is None:
+            return None
+        return (left or 0.0) + (right or 0.0)
+
+    @staticmethod
+    def _merge_total_seconds(left: Optional[float], right: Optional[float]) -> Optional[float]:
+        if left is None:
+            return right
+        if right is None:
+            return left
+        return max(left, right)
+
+    @model_validator(mode="after")
+    def _derive_totals(self) -> "TokenUsage":
+        if self.total_tokens == 0 and (self.input_tokens or self.output_tokens):
+            self.total_tokens = self.input_tokens + self.output_tokens
+        if self.total_cost is None and (self.input_cost is not None or self.output_cost is not None):
+            self.total_cost = (self.input_cost or 0.0) + (self.output_cost or 0.0)
+        return self
+
+    def __add__(self, other: "TokenUsage") -> "TokenUsage":
+        return TokenUsage(
+            input_tokens=self.input_tokens + other.input_tokens,
+            output_tokens=self.output_tokens + other.output_tokens,
+            total_tokens=self.total_tokens + other.total_tokens,
+            input_cost=self._add_optional_cost(self.input_cost, other.input_cost),
+            output_cost=self._add_optional_cost(self.output_cost, other.output_cost),
+            total_cost=self._add_optional_cost(self.total_cost, other.total_cost),
+            model_name=self._merge_model_name(self.model_name, other.model_name),
+            llm_seconds=self.llm_seconds + other.llm_seconds,
+            total_seconds=self._merge_total_seconds(self.total_seconds, other.total_seconds),
+        )

@@ -1,0 +1,14 @@
+# Keep Docker build context lean for Dockerfile.dev
+.git
+**/.git
+**/node_modules
+**/target
+**/build
+**/.idea
+**/.vscode
+**/.cursor
+agent-transcripts
+*.war
+docs/verification-screenshots
+instantbi
+docker/hi

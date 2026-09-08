@@ -1,0 +1,27 @@
+.ui-tick-toggle.ant-checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.85);
+
+  .ant-checkbox {
+    top: 0;
+  }
+
+  .ant-checkbox-inner {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+  }
+
+  .ant-checkbox-checked::after {
+    display: none;
+  }
+
+  > span:not(.ant-checkbox) {
+    padding-left: 8px;
+    padding-right: 0;
+    white-space: normal;
+  }
+}

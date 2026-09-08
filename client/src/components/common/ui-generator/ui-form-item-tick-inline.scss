@@ -1,0 +1,27 @@
+/* Square checkbox + label on one row, with space from neighboring inputs. */
+.ui-form-item--checkbox {
+  .ant-form-item-row {
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .ant-form-item-label {
+    display: none;
+  }
+
+  .ant-form-item-control {
+    flex: 1 1 auto;
+    max-width: 100%;
+
+    .ant-form-item-control-input {
+      min-height: 32px;
+    }
+
+    .ant-form-item-control-input-content {
+      display: flex;
+      align-items: center;
+      min-height: 32px;
+    }
+  }
+}

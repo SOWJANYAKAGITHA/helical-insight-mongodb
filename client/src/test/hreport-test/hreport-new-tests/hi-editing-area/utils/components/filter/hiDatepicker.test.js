@@ -1,0 +1,46 @@
+import { configureStore } from "@reduxjs/toolkit";
+import { render, screen, waitFor } from "@testing-library/react";
+import { Provider } from "react-redux";
+import reducers from "../../../../../../../redux";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { hiMockAxios } from "../../../../../../../app/mock-axios";
+import { hiDate_picker,props } from "./mocks/hiDatePicker.mocks";
+import { HiDatePicker } from "../../../../../../../components/hi-reports/hi-editing-area/components/filters/hi-datepicker";
+import { HiDateRangePicker } from "../../../../../../../components/hi-reports/hi-editing-area/components/filters/hi-datepicker";
+
+const App = () => {
+  const store = configureStore({
+    reducer: reducers,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: hiMockAxios,
+        },
+        immutableCheck: false,
+        serializableCheck: false,
+      }),
+    preloadedState: { hreport: hiDate_picker },
+  });
+let handleOnChange = jest.fn()
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <Provider store={store}>
+        <HiDatePicker {...props} 
+        onChange={handleOnChange}
+        />
+      </Provider>
+    </DndProvider>
+  );
+};
+
+describe("Rendering HiDatePicker", () => {
+  
+  test("HiDatePicker component", async () => {
+    await waitFor(() => render(<App hiDate_picker={hiDate_picker} />));
+
+    const comp = screen.queryByTestId(/Hi-report-hidate-picker/i);
+
+    expect(comp).toBeTruthy();
+  });
+});

@@ -1,0 +1,189 @@
+@import "../../../../styles/variables.scss";
+
+.hi-admin-scheduling-container {
+  border: 1px solid $hi-light-gray;
+
+  .scheduling-header-container {
+    height: 50px;
+    border-bottom: 1px solid $hi-white-smoke;
+  }
+
+  .scheduling-header-data-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .scheduling-title {
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .scheduling-refresh-button {
+    text-align: end;
+    padding-right: 7px;
+  }
+
+  .plugin-refresh-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .scheduling-alert-icon {
+    padding-left: 5px;
+  }
+
+  .scheduling-alert {
+    width: 100px;
+  }
+
+  .scheduling-table-container {
+    padding: 5px;
+    height: 98%;
+  }
+
+  .table-row-color {
+    background-color: whitesmoke;
+  }
+
+  .capitalize {
+    text-transform: capitalize;
+  }
+
+  .ant-card-body {
+    padding: 0px !important;
+  }
+
+  .expired {
+    color: $hi-red;
+  }
+
+  .actions-card {
+    margin-right: 5px;
+  }
+
+  .scheduling-email-recipients {
+    max-width: 200px;
+  }
+
+  .scheduling-job-name {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    gap: 6px;
+  }
+
+  .scheduling-job-name__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .scheduling-job-name__info {
+    flex-shrink: 0;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.75);
+    }
+  }
+}
+
+.more-info-drawer {
+  .CodeMirror {
+    height: 130px;
+  }
+
+  .ant-table.ant-table-small
+    .ant-table-tbody
+    .ant-table-wrapper:only-child
+    .ant-table {
+    margin: 0;
+  }
+
+  .scheduling-more-info-table-cell {
+    max-width: 200px;
+  }
+}
+
+.hi-scheduling-tabs {
+  .ant-tabs-nav {
+    margin: 0 0 8px 8px;
+  }
+}
+
+.hi-system-scheduling-container {
+  border: 1px solid $hi-light-gray;
+
+  .system-schedule-header {
+    padding: 8px 12px;
+    border-bottom: 1px solid $hi-white-smoke;
+  }
+
+  .system-schedule-title {
+    font-weight: 600;
+  }
+
+  .system-schedule-actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .table-row-color {
+    background-color: whitesmoke;
+  }
+
+  .ant-card-body {
+    padding: 0 !important;
+  }
+}
+
+.system-schedule-toggle {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.system-schedule-drawer {
+  .system-schedule-form {
+    .ui-form-generator-section__body {
+      padding-left: 0;
+      border-left: none;
+    }
+
+    &.ant-form-horizontal {
+      .ant-form-item-row {
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+
+      .ant-form-item-label {
+        padding-bottom: 0;
+        padding-right: 8px;
+
+        > label {
+          height: auto;
+          white-space: normal;
+        }
+      }
+
+      .ui-form-item--tick-inline {
+        .ant-form-item-label {
+          flex: 0 0 140px;
+          max-width: 140px;
+        }
+
+        .ant-form-item-control {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
